@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/Abdul-Quader/TestJen.git'
+                git branch: 'main', url: 'https://github.com/Abdul-Quader/TestJen.git'
             }
         }
     }
