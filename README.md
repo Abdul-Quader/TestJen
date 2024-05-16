@@ -76,6 +76,7 @@ Explanation:
 Create a basic Python script named app.py to demonstrate the deployment process.
 
 //Python
+~~~
 from flask import Flask
 
 app = Flask(__name__)
@@ -86,7 +87,7 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
+~~~
     
 Explanation:
 •	This simple Flask application defines a route (/) that returns the message "Hello from a deployed web app!".
@@ -97,7 +98,7 @@ Explanation:
 •	Create a new file named Jenkinsfile inside the repository.
 
 5. Building and Pushing Docker Image to ECR with Tag Versions 
-
+~~~
 The Jenkinsfile for building and pushing the Docker image to ECR, including version tags:
 pipeline {
     agent any
@@ -146,6 +147,7 @@ pipeline {
         // ... other stages for deployment, etc.
     }
 }
+~~~
  Explanation:
 •	The "environment" block declares environment variables, that would be used throughout the pipeline.
 •	The pipeline block defines the overall pipeline structure.
@@ -161,6 +163,7 @@ o	With the ECR repository URI and build number (<REPOSITORY_URI>:<buildVersion>)
 
 6. Deploying to EC2 
 Updated Jenkinsfile demonstrating deployment to EC2 and post-build actions.
+~~~
 pipeline {
     agent any
     stages {
@@ -222,7 +225,7 @@ stage('Deploy to EC2') {
         }
     }
 }
-
+~~~
 Explanation:
 •	The Checkout Code stage retrieves code from your Git repository.
 •	The Build Docker Image stage builds the image.
