@@ -51,7 +51,7 @@ o	Search for and install plugins like "Git", "Docker”, "Docker pipeline”,  "
 •	Create a file named Dockerfile in the same directory as your Jenkinsfile.
 
 Example Dockerfile (Simple Python App):
-
+~~~
 #Dockerfile
 FROM python:3.8-slim
 
@@ -63,7 +63,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 CMD [ "python", "app.py" ]
-
+~~~
 
 Explanation:
 •	This Dockerfile defines instructions to build a Docker image based on a Python 3.8 slim image.
