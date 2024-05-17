@@ -153,12 +153,12 @@ pipeline {
 •	The pipeline block defines the overall pipeline structure.
 •	The agent any specifies any available Jenkins agent can run the job.
 •	The stages block defines different stages in the pipeline:
-o	Checkout Code: Fetches code from your Git repository using the git step. 
-•	In the "Build Docker Image" stage, the docker build command now uses ${BUILD_NUMBER} as part of the image tag. This injects the current Jenkins build number into the tag, creating a unique version identifier for each build.
-•	The "Push to ECR" stage retrieves the build version from the ${BUILD_NUMBER} environment variable within a script block.
+•	Checkout Code: Fetches code from your Git repository using the git step. 
+•	In the "Build Docker Image" stage, the docker build command now uses "${BUILD_NUMBER}" as part of the image tag. This injects the current Jenkins build number into the tag, creating a unique version identifier for each build.
+•	The "Push to ECR" stage retrieves the build version from the "${BUILD_NUMBER}" environment variable within a script block.
 •	The image is then tagged twice:
-o	With the build number (my-web-app:${buildVersion}) for internal tracking.
-o	With the ECR repository URI and build number (<REPOSITORY_URI>:<buildVersion>) for pushing to the ECR repository.
+•	With the build number (my-web-app:${buildVersion}) for internal tracking.
+•	With the ECR repository URI and build number (<REPOSITORY_URI>:<buildVersion>) for pushing to the ECR repository.
 •	And, the script pushes the image with the ECR-specific tag to your ECR repository.
 
 6. Deploying to EC2 
@@ -230,14 +230,14 @@ Explanation:
 •	The Checkout Code stage retrieves code from your Git repository.
 •	The Build Docker Image stage builds the image.
 •	The Deploy to EC2 stage: 
-o	Retrieves the ECR repository URI.
-o	Configures AWS credentials temporarily for script execution (Use IAM role.)
-o	Logs in to ECR using the AWS CLI.
-o	Pulls the latest image from ECR.
-o	Uses SSH to connect to the EC2 instance and performs the following actions (replace placeholders with your details): 
-	Stops and removes any existing container named "my-web-app".
-	Runs the pulled image as a detached container, mapping port 80 on the container to port 80 on the EC2 instance, and naming it "my-web-app."
-o	Updates the security group to allow all traffic on port 80 for demonstration purposes 
+•	Retrieves the ECR repository URI.
+•	Configures AWS credentials temporarily for script execution (Use IAM role.)
+•	Logs in to ECR using the AWS CLI.
+•	Pulls the latest image from ECR.
+•	Uses SSH to connect to the EC2 instance and performs the following actions (replace placeholders with your details): 
+•	Stops and removes any existing container named "my-web-app".
+•	Runs the pulled image as a detached container, mapping port 80 on the container to port 80 on the EC2 instance, and naming it "my-web-app."
+•	Updates the security group to allow all traffic on port 80 for demonstration purposes 
 
 7. Jenkins Job Validation and Success Message:
 •	We've added a new stage named "Post-Build Actions."
