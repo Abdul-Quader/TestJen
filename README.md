@@ -240,9 +240,9 @@ Explanation:
 •	Updates the security group to allow all traffic on port 80 for demonstration purposes 
 
 7. Jenkins Job Validation and Success Message:
-•	We've added a new stage named "Post-Build Actions."
-•	Inside this stage, a script block checks the current build result (currentBuild.result).
-•	If the result is "SUCCESS," it displays a success message using echo. You can customize this message as needed.
+•\	We've added a new stage named "Post-Build Actions."
+•\	Inside this stage, a script block checks the current build result (currentBuild.result).
+•\	If the result is "SUCCESS," it displays a success message using echo. You can customize this message as needed.
 
 8. Email Notification with Job Status:
 •	We've added a post section after the pipeline stages.
@@ -251,9 +251,10 @@ Explanation:
 •	And the recipient address.
 
 9. Registering a Domain with AWS:
+
 Steps:
-1.	Access Route 53: Go to the AWS Management Console and navigate to the Route 53 service.
-2.	Register Domain: Click on "Register domain names" and follow the wizard to register a new domain name or transfer an existing one to AWS.
-3.	Create Hosted Zone: After registration, create a Hosted Zone for your domain. This zone manages DNS records that map your domain name to resources (like the EC2 instance).
-4.	Create A Record: In the Hosted Zone, create an A record that points the domain name to your EC2 instance's public IP address. This allows users to access your application using the domain name instead of the IP address.
+•	Access Route 53: Go to the AWS Management Console and navigate to the Route 53 service.
+•	Register Domain: Click on "Register domain names" and follow the wizard to register a new domain name or transfer an existing one to AWS.
+•	Create Hosted Zone: After registration, create a Hosted Zone for your domain. This zone manages DNS records that map your domain name to resources (like the EC2 instance).
+•	Create A Record: In the Hosted Zone, create an A record that points the domain name to your EC2 instance's public IP address. This allows users to access your application using the domain name instead of the IP address.
 
