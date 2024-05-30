@@ -36,9 +36,9 @@ pipeline {
                     // Configure AWS credentials and ECR details here
                     sh 'aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin <ECR_REPOSITORY_URI>'
                     // Tag image with build version and ECR repository URI
-                    sh "docker tag my-web-app:${buildVersion} <REPOSITORY_URI>:${buildVersion}"
+                    sh "docker tag my-web-app:${buildVersion} ${REPOSITORY_URI}:${buildVersion}"
                     // Push image to ECR with build version tag
-                    sh "docker push <REPOSITORY_URI>:${buildVersion}"
+                    sh "docker push ${REPOSITORY_URI}:${buildVersion}"
                 }
             }
         }
